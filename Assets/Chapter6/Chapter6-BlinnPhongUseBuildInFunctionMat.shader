@@ -1,4 +1,4 @@
-Shader "Custom/Chapter6-SpecularVertexLevel"
+Shader "Custom/Chapter6-BlinnPhongUseBuildInFunctionMat"
 {
     Properties
     {
@@ -38,7 +38,7 @@ Shader "Custom/Chapter6-SpecularVertexLevel"
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
 
-                o.worldNormal = mul(v.normal, (float3x3)unity_WorldToObject);
+                o.worldNormal = UnityObjectToWorldNormal(v.normal);
                 o.worldPos = mul(v.vertex, (float3x3)unity_WorldToObject);
 
                 return o;
@@ -48,18 +48,17 @@ Shader "Custom/Chapter6-SpecularVertexLevel"
                 // calc ambient + diffuse color
                 fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
                 fixed3 worldNormal = normalize(i.worldNormal);
-                fixed3 worldLight = normalize(_WorldSpaceLightPos0.xyz);
-                fixed3 halfLambert =  saturate(dot(worldNormal, worldLight));
+                fixed3 worldLightDir = normalize(UnityWorldSpaceLightDir(i.worldPos));
+                fixed3 halfLambert =  saturate(dot(worldNormal, worldLightDir));
                 fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * halfLambert;
 
                 // calc specular
-                fixed3 reflectDir = normalize(reflect(-worldLight, worldNormal));
-                fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - (normalize(i.worldPos)).xyz);
+                fixed3 reflectDir = normalize(reflect(-worldLightDir, worldNormal));
+                fixed3 viewDir = normalize(UnityWorldSpaceViewDir(i.worldPos));
                 fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(saturate(dot(reflectDir, viewDir)), _Gloss);
 
                 return half4(diffuse + ambient + specular, 1.0);
             }
-
         ENDCG
         }
     }
