@@ -52,3 +52,6 @@ Thumbs.db
 # ========== Others ==========
 *.log
 *.vsconfig
+
+Packages/*
+UserSettings/*
