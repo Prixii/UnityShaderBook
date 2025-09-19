@@ -4,24 +4,24 @@ Shader "Custom/Chapter7-MaskTexture"
     {
         _Color ("Color Tint", Color) = (1,1,1,1)
         _MainTex ("Main Tex", 2D) = "white" {}
-        _BumpMap ("Bump Tex", 2D) = "bump" {}
-        _BumpScale ("Bump Scale", Float) = -.08
-        _SpecularMask ("Mask Tex", 2D) = "white" {}
+        _BumpMap ("Normal Map", 2D) = "bump" {}
+        _BumpScale ("Bump Scale", Float) = 1.0
+        _SpecularMask ("Specular Mask", 2D) = "white" {}
         _SpecularScale ("Specular Scale", Float) = 1.0
         _Specular ("Specular", Color) = (1, 1, 1, 1)
-        _Gloss("Gloss", Range(8.0, 256)) = 20
+        _Gloss ("Gloss", Range(8.0, 256)) = 20
     }
     SubShader
     {
         Pass {
-            Tags { "RenderType"="ForwardBase" }
+            Tags { "LightMode"="ForwardBase" }
 
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
             #include "Lighting.cginc"
 
-            float4 _Color;
+            fixed4 _Color;
             sampler2D _MainTex;
             float4 _MainTex_ST;
             sampler2D _BumpMap;
@@ -32,17 +32,17 @@ Shader "Custom/Chapter7-MaskTexture"
             float _Gloss;
 
             struct a2v {
-                float4 vertex: POSITION;
-                float3 normal: NORMAL;
-                float4 texcoord: TEXCOORD0;
-                float4 tangent: TANGENT;
+                float4 vertex : POSITION;
+                float3 normal : NORMAL;
+                float4 tangent : TANGENT;
+                float4 texcoord : TEXCOORD0;
             };
 
             struct v2f {
-                float4 pos: SV_POSITION;
-                float2 uv: TEXCOORD0;
+                float4 pos : SV_POSITION;
+                float2 uv : TEXCOORD0;
                 float3 lightDir: TEXCOORD1;
-                float3 viewDir: TEXCOORD2;
+                float3 viewDir : TEXCOORD2;
             };
 
             v2f vert(a2v v) {
@@ -52,13 +52,13 @@ Shader "Custom/Chapter7-MaskTexture"
 
                 TANGENT_SPACE_ROTATION;
 
-                o.lightDir = mul(rotation, ObjSpaceLightDir(v.vertex));
-                o.viewDir = mul(rotation, ObjSpaceViewDir(v.vertex));
+                o.lightDir = mul(rotation, ObjSpaceLightDir(v.vertex)).xyz;
+                o.viewDir = mul(rotation, ObjSpaceViewDir(v.vertex)).xyz;
 
                 return o;
             }
 
-            float4 frag(v2f i): SV_Target {
+            fixed4 frag(v2f i) : SV_Target {
                 fixed3 tangentLightDir = normalize(i.lightDir);
                 fixed3 tangentViewDir = normalize(i.viewDir);
 
@@ -70,20 +70,18 @@ Shader "Custom/Chapter7-MaskTexture"
 
                 fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * albedo;
 
-                fixed3 diffuse = _LightColor0.rgb * albedo * saturate(dot(tangentNormal, tangentViewDir));
+                fixed3 diffuse = _LightColor0.rgb * albedo * max(0, dot(tangentNormal, tangentLightDir));
 
-                fixed3 halfDir = normalize(tangentViewDir + tangentLightDir);
+                fixed3 halfDir = normalize(tangentLightDir + tangentViewDir);
                 
-                fixed3 specularMask = tex2D(_SpecularMask, i.uv).r * _SpecularScale;
-                fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(saturate(dot(tangentNormal, halfDir)), _Gloss) * specularMask;
+                fixed specularMask = tex2D(_SpecularMask, i.uv).r * _SpecularScale;
+                fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(max(0, dot(tangentNormal, halfDir)), _Gloss) * specularMask;
 
-                return fixed4(ambient + diffuse + specular * specularMask, 1);
-                
+                return fixed4(ambient + diffuse + specular, 1.0);
             }
-
 
             ENDCG
         }
     }
-    FallBack "Diffuse"
+    FallBack "Specular"
 }

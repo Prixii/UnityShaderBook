@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "G:\\unity\\ShaderBook\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\unity\\ShaderBook\\Assets\\Chapter5-SimpleShader.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Chapter5-SimpleShader.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\unity\\ShaderBook\\Assets\\Chapter8\\Shader\\Chapter8-AlphaTest.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Chapter8\\Shader\\Chapter8-AlphaTest.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Chapter5-SimpleShader.shader",
-              "DocumentMoniker": "G:\\unity\\ShaderBook\\Assets\\Chapter5-SimpleShader.shader",
-              "RelativeDocumentMoniker": "Assets\\Chapter5-SimpleShader.shader",
-              "ToolTip": "G:\\unity\\ShaderBook\\Assets\\Chapter5-SimpleShader.shader",
-              "RelativeToolTip": "Assets\\Chapter5-SimpleShader.shader",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Title": "Chapter8-AlphaTest.shader",
+              "DocumentMoniker": "G:\\unity\\ShaderBook\\Assets\\Chapter8\\Shader\\Chapter8-AlphaTest.shader",
+              "RelativeDocumentMoniker": "Assets\\Chapter8\\Shader\\Chapter8-AlphaTest.shader",
+              "ToolTip": "G:\\unity\\ShaderBook\\Assets\\Chapter8\\Shader\\Chapter8-AlphaTest.shader",
+              "RelativeToolTip": "Assets\\Chapter8\\Shader\\Chapter8-AlphaTest.shader",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAEEAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
-              "WhenOpened": "2025-09-11T12:05:18.726Z",
+              "WhenOpened": "2025-09-17T13:53:44.989Z",
               "EditorCaption": ""
             }
           ]
