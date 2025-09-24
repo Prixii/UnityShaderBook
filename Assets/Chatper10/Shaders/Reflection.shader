@@ -43,9 +43,9 @@ Shader "Custom/Chapter10-Reflection"
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
 
-                o.worldNormal = UnityObjectToWorldNormal(v.normal);
-
                 o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+
+                o.worldNormal = UnityObjectToWorldNormal(v.normal);
 
                 float3 worldViewDir = UnityWorldSpaceViewDir(o.worldPos);
 
