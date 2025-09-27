@@ -30,7 +30,7 @@ Shader "Custom/Mirror" {
                 o.pos = UnityObjectToClipPos(v.vertex);
 
                 o.uv = v.texcoord;
-                // Mirror needs to filp x
+                // Mirror needs to flip x
                 o.uv.x = 1 - o.uv.x;
 
                 return o;
