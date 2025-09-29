@@ -6,21 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class PostEffectsBase : MonoBehaviour
 {
-    protected void CheckResources()
-    {
-        var isSupported = CheckSupport();
-    }
 
-    protected bool CheckSupport()
-    {
-        if (SystemInfo.supportsImageEffects == false)
-        {
-            Debug.LogWarning("This platform does not support image effects.");
-            return false;
-        }
-
-        return true;
-    }
 
     protected void NotSupported()
     {
@@ -31,7 +17,6 @@ public class PostEffectsBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CheckResources();
     }
 
     protected Material CheckShaderAndCreateMaterial(Shader shader, Material material)
