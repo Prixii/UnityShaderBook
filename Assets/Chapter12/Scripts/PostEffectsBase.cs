@@ -46,7 +46,6 @@ public class PostEffectsBase : MonoBehaviour
             }
             else
             {
-
                 return null;
             }
         }
