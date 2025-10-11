@@ -58,10 +58,7 @@ Shader "Custom/BrightnessSaturationAndContrast"{
                 finalColor = lerp(avgColor, finalColor, _Contrast);
 
                 return fixed4(finalColor, renderTex.a);
-
             }
-
-
             ENDCG
         }
     }
