@@ -54,6 +54,17 @@ public class FogWithNoise : PostEffectsBase
     public float fogStart = 0.0f;
     public float fogEnd = 2.0f;
 
+    public Texture noiseTexture;
+
+    [Range(-0.5f, 0.5f)]
+    public float fogXSpeed = 0.1f;
+
+    [Range(-0.5f, 0.5f)]
+    public float fogYSpeed = 0.1f;
+
+    [Range(0.0f, 3.0f)]
+    public float noiseAmount = 1.0f;
+
     private void OnEnable()
     {
         camera.depthTextureMode |= DepthTextureMode.Depth;
@@ -111,6 +122,11 @@ public class FogWithNoise : PostEffectsBase
             material.SetColor("_FogColor", fogColor);
             material.SetFloat("_FogStart", fogStart);
             material.SetFloat("_FogEnd", fogEnd);
+
+            material.SetTexture("_NoiseTex", noiseTexture);
+            material.SetFloat("_FogXSpeed", fogXSpeed);
+            material.SetFloat("_FogYSpeed", fogYSpeed);
+            material.SetFloat("_NoiseAmount", noiseAmount);
 
             Graphics.Blit(src, dest, material);
         }

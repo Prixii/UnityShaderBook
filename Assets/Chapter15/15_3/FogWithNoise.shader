@@ -5,6 +5,10 @@ Shader "Custom/FogWithDepthTexture" {
         _FogColor ("Fog Color", Color) = (1, 1, 1, 1)
         _FogStart ("Fog Start", Float) = 0.0
         _FogEnd ("Fog End", Float) = 1.0
+        _NoiseTex("Noise Texture", 2D) = "white" {}
+        _FogXSpeed("Fog Horizontal Speed", Float) = 0.1
+        _FogYSpeed("Fog Vertical Speed", Float) = 0.1
+        _NoiseAmount("Noise Amount", Float) = 1
     }
 
     SubShader {
@@ -20,6 +24,12 @@ Shader "Custom/FogWithDepthTexture" {
         half4 _FogColor;
         float _FogStart;
         float _FogEnd;
+
+        sampler2D _NoiseTex;
+        float _FogXSpeed;
+        float _FogYSpeed;
+        float _NoiseAmount;
+
 
         struct v2f {
             float4 pos : SV_POSITION;
@@ -65,8 +75,11 @@ Shader "Custom/FogWithDepthTexture" {
             float linearDepth = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.uv_depth));
             float3 worldPos = _WorldSpaceCameraPos + linearDepth * i.interpolatedRay.xyz;
 
+            float2 speed = _Time.y * float2(_FogXSpeed, _FogYSpeed);
+            float noise = (tex2D(_NoiseTex, i.uv + speed).r - 0.5) * _NoiseAmount;
+
             float fogDensity = (_FogEnd - worldPos.y) / (_FogEnd - _FogStart);
-            fogDensity = saturate(fogDensity * _FogDensity);
+            fogDensity = saturate(fogDensity * _FogDensity * (1 + noise));
 
             fixed4 finalColor = tex2D(_MainTex, i.uv);
             finalColor.rgb = lerp(finalColor.rgb, _FogColor.rgb, fogDensity);

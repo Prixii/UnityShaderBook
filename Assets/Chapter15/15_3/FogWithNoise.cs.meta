@@ -3,7 +3,9 @@ guid: 96e3564897e71ce4384eea6e3eb2cfdc
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - shader: {instanceID: 0}
+  - noiseTexture: {fileID: 2800000, guid: 98bf0639d35d062439dfcac1c38c8cc5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

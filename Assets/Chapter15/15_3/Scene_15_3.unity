@@ -313,13 +313,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718126199}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07768138, y: 0.32548332, z: -0.023133494, w: 0.94206744}
-  m_LocalPosition: {x: 1.19, y: -0.21, z: -4.64}
+  m_LocalRotation: {x: 0.1547317, y: 0.32248694, z: -0.049766798, w: 0.93251467}
+  m_LocalPosition: {x: 1.34, y: 0.54, z: -4.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 9.289, y: 38.153, z: 0.405}
+  m_LocalEulerAnglesHint: {x: 18.704, y: 38.223, z: 0.422}
 --- !u!114 &718126203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,14 +329,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 718126199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a18af954f031498478d184411400d228, type: 3}
+  m_Script: {fileID: 11500000, guid: 96e3564897e71ce4384eea6e3eb2cfdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: cadc4b33fcfcdda4284415d6ec02e9f8, type: 3}
-  fogDensity: 0.22
+  fogDensity: 1
   fogColor: {r: 1, g: 1, b: 1, a: 1}
-  fogStart: 0
-  fogEnd: 2
+  fogStart: -1.26
+  fogEnd: 1.23
+  noiseTexture: {fileID: 2800000, guid: 98bf0639d35d062439dfcac1c38c8cc5, type: 3}
+  fogXSpeed: -0.04
+  fogYSpeed: 0.02
+  noiseAmount: 1.89
 --- !u!1 &796172752
 GameObject:
   m_ObjectHideFlags: 0
