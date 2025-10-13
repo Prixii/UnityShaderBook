@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DissolveMat
-  m_Shader: {fileID: 4800000, guid: 8041e22551c78a9459a8e1ff39116cf2, type: 3}
+  m_Name: WaterWaveMat
+  m_Shader: {fileID: 4800000, guid: d2318a1112e45fa4682d320f88c82a5f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,12 +24,12 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 8dc0b88dad398334aba8568ccdce9cf5, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _BurnMap:
-        m_Texture: {fileID: 2800000, guid: df5f9ff16b551b6448ad0202330c445a, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
+    - _Cubemap:
+        m_Texture: {fileID: 8900000, guid: 91fd038b16ae79f4a898b0f0d52bdea2, type: 2}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
@@ -48,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 89775a6647ea73641aa0e6c1f2f1360d, type: 3}
+        m_Texture: {fileID: 2800000, guid: ea1806967b2fca94a9eef704cb3fd3ef, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -63,17 +63,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _WaveMap:
+        m_Texture: {fileID: 2800000, guid: 3d3fd45e5434f3b428e41bfc16b284d3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _BurnAmount: 0.03
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _Distortion: 50
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LineWidth: 0.15
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -82,10 +85,10 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WaveXSpeed: 0.056
+    - _WaveYSpeed: 0.056
     - _ZWrite: 1
     m_Colors:
-    - _BurnFirstColor: {r: 0.8301887, g: 0.8026269, b: 0.37201852, a: 1}
-    - _BurnSecondColor: {r: 0.6698113, g: 0.3254272, b: 0.3254272, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
